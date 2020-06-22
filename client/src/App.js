@@ -2,20 +2,8 @@ import React from 'react';
 import {ThemeProvider, createMuiTheme, makeStyles} from '@material-ui/core/styles';
 import TopMenu from "./components/TopMenu";
 import MainContainer from "./components/MainContainer";
-import Landing from "./pages/Landing";
+import ReflectedText from "./components/ReflectedText";
 
-
-const useStyles = makeStyles((theme) => ({
-    main: {
-        minHeight: theme.spacing(7),
-        paddingLeft: theme.spacing(2),
-        background: "black",
-        height: `calc(100vh - ${theme.spacing(7)}px)`,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    }
-}));
 
 function App() {
     const theme = createMuiTheme({
@@ -58,14 +46,14 @@ function App() {
             }
         }
     });
-    const classes = useStyles();
+
     return (
         <div className="App">
             <ThemeProvider  theme={theme}>
                 <TopMenu/>
                 <MainContainer>
-                    {/*<ReflectedText/>*/}
-                    <Landing/>
+                    <ReflectedText/>
+                    {/*<Landing/>*/}
                 </MainContainer>
             </ThemeProvider >
         </div>
