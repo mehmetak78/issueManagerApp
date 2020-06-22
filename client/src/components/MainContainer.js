@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     mainContainer: {
-        minHeight: theme.spacing(7),
+        // minHeight: theme.spacing(7),
         paddingLeft: theme.spacing(2),
         background: "black",
         height: `calc(100vh - ${theme.spacing(7)}px - ${theme.spacing(3)}px)`,

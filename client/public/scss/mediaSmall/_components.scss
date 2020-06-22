@@ -1,8 +1,10 @@
 @media screen and (max-width: 720px) {
   .reflected-text-container {
     .wavy {
+      margin-bottom: 5em;
       span {
         font-size: 2.5em;
+
       }
     }
   }
@@ -10,8 +12,9 @@
 @media screen and (max-height: 300px) {
   .reflected-text-container {
     .wavy {
+      margin-bottom: 3.0em;
       span {
-        font-size: 1.8em;
+        font-size: 1.5em;
         animation: animate-text-small 1s ease-in-out infinite;
         animation-delay: calc(0.07s * var(--i));
       }
