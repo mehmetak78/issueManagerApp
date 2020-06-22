@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
         minHeight: theme.spacing(7),
         paddingLeft: theme.spacing(2),
         background: "black",
-        height: `calc(100vh - ${theme.spacing(7)}px)`,
+        height: `calc(100vh - ${theme.spacing(7)}px - ${theme.spacing(3)}px)`,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

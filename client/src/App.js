@@ -3,7 +3,7 @@ import {ThemeProvider, createMuiTheme, makeStyles} from '@material-ui/core/style
 import TopMenu from "./components/TopMenu";
 import MainContainer from "./components/MainContainer";
 import ReflectedText from "./components/ReflectedText";
-
+import BottomBar from "./components/BottomBar";
 
 function App() {
     const theme = createMuiTheme({
@@ -55,6 +55,7 @@ function App() {
                     <ReflectedText/>
                     {/*<Landing/>*/}
                 </MainContainer>
+                <BottomBar/>
             </ThemeProvider >
         </div>
     );
