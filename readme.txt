@@ -50,7 +50,7 @@ To Run Them Together
             "dev": "concurrently \"npm run server\" \"npm run client\""
           },
 
-- Use proxy for direct rooting to local host
+- Use proxy for direct rooting to local hostd
     - Copy the setupProxy.js from an older project
 
 - Remove git repository from client
