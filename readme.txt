@@ -7,15 +7,9 @@ To Run Client
 To Run Them Together
     $ npm run dev
 
-To Login : http://localhost:5000/auth/google (You will get error when you call from browser, check with get current user as below)
-To Get Current User : http://localhost:5000/auth/api/current_user
-To Logout : http://localhost:5000/auth/api/logout
-Private Home Page : http://localhost:3000/privateHome  (You must be logged in)
-Public Home Page : http://localhost:3000/publicHome  (No login required)
-
 *************
 
-- Create an empty project called "oAuthReact"
+- Create an empty project called "borsaApp"
 - npm init
     MEHMETs-MacBook-Pro:contact-keeper mehmetak$ npm init -y
 - Change "package.json"
@@ -42,9 +36,10 @@ Public Home Page : http://localhost:3000/publicHome  (No login required)
         - MEHMETs-MacBook-Pro:contact-keeper mehmetak$ git commit -m "Initial Commit"
     - Share in GitHub
         VCS/Import Into Version Control/Share Project in Github
+
 -------- Client
 - ceate react app
-    mehmetak@MEHMETs-MacBook-Pro contact-keeper % create-react-app client
+    mehmetak@MEHMETs-MacBook-Pro contact-keeper % npx create-react-app client
 - To run them together use Concurently
     - In server's package.json
           "scripts": {
@@ -65,19 +60,6 @@ Public Home Page : http://localhost:3000/publicHome  (No login required)
     - cd client
     - npm install axios react-router-dom http-proxy-middleware
 
-- Font Awesome
-    https://fontawesome.com/account
-        mehmetak78@hotmail.com
-        P*****
-    - Find your kit's cdn
-        https://fontawesome.com/kits/e3a0cdb38a/use
-    - Add cdn to index.html
-        <script src="https://kit.fontawesome.com/e3a0cdb38a.js" crossorigin="anonymous"></script>
-    - Check for İcons
-        https://fontawesome.com/icons?d=gallery&m=free
-    - Use Icon
-        <i className="fas fa-ambulance"></i>
-
 - Create a React Component
     rscp: Creates a stateless React component with PropTypes and ES6 module system
     rsc: Creates a stateless React component without PropTypes and ES6 module system
@@ -97,10 +79,3 @@ Public Home Page : http://localhost:3000/publicHome  (No login required)
 - Use PrivateRoute for routing the components that will be seen after login
 - Use PubliceRoute for routing the components that will be seen if you are not logged in. Especially important for the home page redirected from the server site after login.
 
-- Didn't use the Alert Context in this sample. See jwtReact sample
-
-
-https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokensjwt-and-passport
-
-// When you login with passport, a user info is inserted into req. in session and both client and server uses this info.
-// When you use jwt, you use token instead of session for the same purpose.
