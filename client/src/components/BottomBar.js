@@ -26,9 +26,7 @@ const BottomBar = () => {
     return (
         <AppBar className={classes.appbar} position="static">
             <Toolbar className={classes.toolbar}>
-                <Typography variant="caption" display="block"  className={classes.noMarginPadding}>
-                    <Typography variant="body3" display="inline" className={classes.noMarginPadding}>Mesaj</Typography>
-                </Typography>
+                <Typography variant="caption" className={classes.noMarginPadding}>Mesaj</Typography>
             </Toolbar>
         </AppBar>
     );
