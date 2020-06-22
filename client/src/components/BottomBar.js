@@ -27,9 +27,6 @@ const BottomBar = () => {
         <AppBar className={classes.appbar} position="static">
             <Toolbar className={classes.toolbar}>
                 <Typography variant="caption" display="block"  className={classes.noMarginPadding}>
-                    <Typography variant="body3" display="inline" className={classes.noMarginPadding}>crudSatate:</Typography>
-                    <Typography variant="body3" display="inline" className={classes.noMarginPadding}>formPath:</Typography>
-                    <Typography variant="body3" display="inline" className={classes.noMarginPadding}>dataPath:</Typography>
                     <Typography variant="body3" display="inline" className={classes.noMarginPadding}>Mesaj</Typography>
                 </Typography>
             </Toolbar>
