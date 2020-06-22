@@ -7,3 +7,27 @@
     }
   }
 }
+@media screen and (max-height: 300px) {
+  .reflected-text-container {
+    .wavy {
+      span {
+        font-size: 1.8em;
+        animation: animate-text-small 1s ease-in-out infinite;
+        animation-delay: calc(0.07s * var(--i));
+      }
+    }
+  }
+}
+
+@keyframes animate-text-small
+{
+  0% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-40px);
+  }
+  40%, 100% {
+    transform: translateY(0px);
+  }
+}
