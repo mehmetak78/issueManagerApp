@@ -1,0 +1,25 @@
+
+@import "default/config";
+@import "default/utilities";
+@import "default/components";
+@import "default/buttons";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+
+}
+
+.mainPage {
+  transition: transform ease-in-out 400ms;
+}
+
+
+////@import "mediaSmall/config";
+//@import "mediaSmall/utilities";
+//@import "mediaSmall/components";
+//@import "mediaSmall/navbar";

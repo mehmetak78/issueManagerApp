@@ -58,7 +58,7 @@ To Run Them Together
 
 - Install some dependencies in client
     - cd client
-    - npm install axios react-router-dom http-proxy-middleware
+    - npm install @material-ui/core @material-ui/icons axios react-router-dom http-proxy-middleware
 
 - Create a React Component
     rscp: Creates a stateless React component with PropTypes and ES6 module system

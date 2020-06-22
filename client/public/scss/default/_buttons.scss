@@ -1,0 +1,38 @@
+.toggle-btn {
+  height: 2rem;
+  width:2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .toggle-btn-line {
+    position: relative;
+
+  }
+  .toggle-btn-line, .toggle-btn-line::before, .toggle-btn-line::after {
+    display: block;
+    background: white;
+    height: 2px;
+    width: 1.7rem;
+    position: absolute;
+    content: "";
+  }
+  .toggle-btn-line::before {
+    bottom: 7px;
+  }
+  .toggle-btn-line::after {
+    top: 7px;
+    transition: transform ease-in-out 400ms;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.toggle-btn-open {
+  .toggle-btn-line::after {
+    top: 7px;
+
+    transform: rotate(-10deg);
+
+  }
+}
