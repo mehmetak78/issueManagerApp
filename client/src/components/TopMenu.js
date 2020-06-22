@@ -4,14 +4,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import logo from '../icons/logoMAK2.svg';
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
-import MailIcon from "@material-ui/icons/Mail";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
-
     grow: {
         flexGrow: 1,
     },

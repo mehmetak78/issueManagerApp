@@ -38,13 +38,13 @@
       color: #fff;
       font-size: 4em;
       letter-spacing: 0.2em;
-      animation: animate 1s ease-in-out infinite;
+      animation: animate-text 1s ease-in-out infinite;
       animation-delay: calc(0.07s * var(--i));
     }
   }
 }
 
-@keyframes animate
+@keyframes animate-text
 {
   0% {
     transform: translateY(0px);

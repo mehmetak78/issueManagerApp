@@ -1,9 +1,8 @@
 import React from 'react';
-import './App.css';
 import {ThemeProvider, createMuiTheme, makeStyles} from '@material-ui/core/styles';
 import TopMenu from "./components/TopMenu";
-import Typography from "@material-ui/core/Typography";
-import ReflectedText from "./components/ReflectedText";
+import MainContainer from "./components/MainContainer";
+import Landing from "./pages/Landing";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -64,9 +63,10 @@ function App() {
         <div className="App">
             <ThemeProvider  theme={theme}>
                 <TopMenu/>
-                <div className={classes.main}>
-                    <ReflectedText/>
-                </div>
+                <MainContainer>
+                    {/*<ReflectedText/>*/}
+                    <Landing/>
+                </MainContainer>
             </ThemeProvider >
         </div>
     );
