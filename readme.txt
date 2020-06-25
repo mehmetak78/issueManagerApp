@@ -15,7 +15,7 @@ To Run Them Together
 - Change "package.json"
     Use "server.js" instead of "index.js"
 - Install packages
-    MEHMETs-MacBook-Pro:jwtReact mehmetak$ npm install express passport passport-google-oauth20@2 passport-local passport-jwt express-validator cookie-session bcryptjs jsonwebtoken
+    MEHMETs-MacBook-Pro:jwtReact mehmetak$ npm install express
 - Dev dependencies
     MEHMETs-MacBook-Pro:jwtReact mehmetak$ npm install -D nodemon concurrently
 - Add scripts to "package.json"
@@ -37,7 +37,13 @@ To Run Them Together
     - Share in GitHub
         VCS/Import Into Version Control/Share Project in Github
 
--------- Client
+
+
+
+
+
+
+-------- Client -------------------------------------
 - ceate react app
     mehmetak@MEHMETs-MacBook-Pro contact-keeper % npx create-react-app client
 - To run them together use Concurently
