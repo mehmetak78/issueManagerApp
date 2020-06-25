@@ -3,7 +3,7 @@ module.exports = {
 
     jwtSecret: "*********",
     cookieKey: "*********",
-    tokenName: "*********",
+    tokenName: "**********",
     authPassportSession: false,
     authPassportJWT: false,
     authJWT: true

@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital@1&display=swap");
+.reflected-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reflected-text-container .wavy {
+  font-family: "Dancing Script", cursive;
+  position: relative;
+  -webkit-box-reflect: below 0px linear-gradient(transparent, black);
+  margin-bottom: 8em;
+}
+.reflected-text-container .wavy span {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-size: 4em;
+  letter-spacing: 0.2em;
+  animation: animate-text 1s ease-in-out infinite;
+  animation-delay: calc(0.07s * var(--i));
+}
+
+@keyframes animate-text {
+  0% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-80px);
+  }
+  40%, 100% {
+    transform: translateY(0px);
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.mainPage {
+  transition: transform ease-in-out 400ms;
+}
+
+@media screen and (max-width: 720px) {
+  .reflected-text-container .wavy {
+    margin-bottom: 5em;
+  }
+  .reflected-text-container .wavy span {
+    font-size: 2.5em;
+  }
+}
+@media screen and (max-height: 300px) {
+  .reflected-text-container .wavy {
+    margin-bottom: 3em;
+  }
+  .reflected-text-container .wavy span {
+    font-size: 1.5em;
+    animation: animate-text-small 1s ease-in-out infinite;
+    animation-delay: calc(0.07s * var(--i));
+  }
+}
+@keyframes animate-text-small {
+  0% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-40px);
+  }
+  40%, 100% {
+    transform: translateY(0px);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
