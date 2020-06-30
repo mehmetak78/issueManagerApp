@@ -1,7 +1,7 @@
 module.exports = {
     port: 5005,
 
-    jwtSecret: "*********",
+    jwtSecret: "*******b**",
     cookieKey: "*********",
     tokenName: "*********",
     authPassportSession: false,
