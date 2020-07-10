@@ -13,9 +13,9 @@ To Run Them Together
 - npm init
     MEHMETs-MacBook-Pro:contact-keeper mehmetak$ npm init -y
 - Change "package.json"
-    Use "server.js" instead of "index.js"
+    Use "server.js" instead of "mysql.js"
 - Install packages
-    MEHMETs-MacBook-Pro:jwtReact mehmetak$ npm install express
+    MEHMETs-MacBook-Pro:jwtReact mehmetak$ npm install express mysql cookie-session jsonwebtoken bcryptjs express-validator
 - Dev dependencies
     MEHMETs-MacBook-Pro:jwtReact mehmetak$ npm install -D nodemon concurrently
 - Add scripts to "package.json"
@@ -37,10 +37,18 @@ To Run Them Together
     - Share in GitHub
         VCS/Import Into Version Control/Share Project in Github
 
+MySQL DB
+    create user issmngr@localhost identified by 'issmngr';
+    grant all privileges on issmngr.* to issmngr@localhost;
+    ALTER USER 'issmngr'@localhost IDENTIFIED WITH mysql_native_password BY 'issmngr'; //(Authentication Error, Solution :)
 
-
-
-
+    CREATE TABLE `user` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `name` varchar(100) DEFAULT NULL,
+      `username` varchar(100) DEFAULT NULL,
+      `password` varchar(100) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
 
 -------- Client -------------------------------------

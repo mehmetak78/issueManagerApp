@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
-const db = require("../MYSQL_DB");
+const db = require("../MYSQL_DB/mysql");
 
 const keys = require("../config/keys");
 const requireLogin = require("./requireLogin");
@@ -115,19 +115,24 @@ router.post("/login",
     [
         check("username", "Please include a valid username")
             .not().isEmpty(),
-        check("password", "Please enter a password with 6 or more characters")
+        check("password", "Please enter a password with 3 or more characters")
             .isLength({min: 3})
     ],
     async (req,res) => {
         let response = {
-            message: null,
+            returnCode: -1,
+            returnMessage: null,
+            errors: null,
             user: null,
             token: null
         };
         const errors = validationResult(req);
+        console.log(errors);
         if (!errors.isEmpty()) {
             response = {
-                message : {errors: errors.array()},
+                returnCode : 0,
+                returnMessage : "Invalid Parameters",
+                errors: errors.array(),
                 user: null,
                 token: null
             };
@@ -135,10 +140,23 @@ router.post("/login",
         }
         const {username, password} = req.body;
         try {
-            db.findByColumn("USER","username",username, async (user) => {
-                if (user === undefined) {
+            db.findByColumn("USERXX","username",username, async (user,err) => {
+                if (err) {
                     response = {
-                        message : "Invalid Credentials",
+                        returnCode : -1,
+                        returnMessage : "Server Error",
+                        errors: {code:err.code, sqlMessage: err.sql},
+                        user: null,
+                        token: null
+                    };
+                    //console.log(err);
+                    return res.status(401).json(response);
+                }
+                if (user === undefined || user === null) {
+                    response = {
+                        returnCode : -1,
+                        returnMessage : "Invalid Credentials",
+                        errors: err,
                         user: null,
                         token: null
                     };
@@ -147,7 +165,9 @@ router.post("/login",
                 const isMatch = await bcrypt.compare(password, user.password);
                 if (!isMatch) {
                     response = {
-                        message : "Invalid Credentials",
+                        returnCode : -1,
+                        returnMessage : "Invalid Credentials",
+                        errors: null,
                         user,
                         token: null
                     };
@@ -164,7 +184,9 @@ router.post("/login",
 
         } catch (err) {
             response = {
+                returnCode : -1,
                 message : err.message,
+                errors: null,
                 user: null,
                 token: null
             };
