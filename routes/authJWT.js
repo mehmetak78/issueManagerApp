@@ -8,12 +8,15 @@ const keys = require("../config/keys");
 const requireLogin = require("./requireLogin");
 const {check, validationResult} = require("express-validator");
 
+let response = {
+    returnCode: -1,
+    returnMessage: null,
+    errors: null,
+    user: null,
+    token: null
+};
+
 const jwtSignIn = (user) => {
-    let response = {
-        message: null,
-        user: null,
-        token: null
-    };
     try {
         const payload = {
             user: {
@@ -25,14 +28,16 @@ const jwtSignIn = (user) => {
         const token = jwt.sign(payload, keys.jwtSecret, {expiresIn: 360000});
         if (token) {
             response = {
-                message: "jwt sign successfull",
+                returnCode: 0,
+                returnMessage: "jwt sign successfull",
                 user: {id: user.id, username: user.username, name:user.name},
                 token
             };
         }
         else {
             response = {
-                message : "jwt sign error",
+                returnCode: -1,
+                returnMessage : "jwt sign error",
                 user: null,
                 token: null
             };
@@ -41,7 +46,9 @@ const jwtSignIn = (user) => {
     }
     catch(err) {
         response = {
-            message : err.message,
+            returnCode : -1,
+            returnMessage : err.message,
+            errors: null,
             user: null,
             token: null
         };
@@ -57,15 +64,12 @@ router.post("/register",
             .isLength({min: 3})
     ],
     async (req,res) => {
-        let response = {
-            message: null,
-            user: null,
-            token: null
-        };
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             response = {
-                message : {errors: errors.array()},
+                returnCode : -1,
+                returnMessage : "Invalid Parameters",
+                errors: errors.array(),
                 user: null,
                 token: null
             };
@@ -76,7 +80,9 @@ router.post("/register",
             db.findByColumn("USER","username",username, async (user)=> {
                 if (user !== undefined) {
                     response = {
-                        message : "User Already Exists",
+                        returnCode : -1,
+                        returnMessage : "User Already Exists",
+                        errors: [{msg: err.sqlMessage}],
                         user,
                         token: null
                     };
@@ -103,7 +109,9 @@ router.post("/register",
             });
         } catch (err) {
             response = {
-                message : err.message,
+                returnCode : -1,
+                returnMessage : err.message,
+                errors: null,
                 user: null,
                 token: null
             };
@@ -119,18 +127,11 @@ router.post("/login",
             .isLength({min: 3})
     ],
     async (req,res) => {
-        let response = {
-            returnCode: -1,
-            returnMessage: null,
-            errors: null,
-            user: null,
-            token: null
-        };
         const errors = validationResult(req);
         console.log(errors);
         if (!errors.isEmpty()) {
             response = {
-                returnCode : 0,
+                returnCode : -1,
                 returnMessage : "Invalid Parameters",
                 errors: errors.array(),
                 user: null,
@@ -140,23 +141,23 @@ router.post("/login",
         }
         const {username, password} = req.body;
         try {
-            db.findByColumn("USERXX","username",username, async (user,err) => {
+            db.findByColumn("USER","username",username, async (user,err) => {
                 if (err) {
                     response = {
                         returnCode : -1,
                         returnMessage : "Server Error",
-                        errors: {code:err.code, sqlMessage: err.sql},
+                        errors: [{msg: err.sqlMessage}],
                         user: null,
                         token: null
                     };
-                    //console.log(err);
+                    console.log(err);
                     return res.status(401).json(response);
                 }
                 if (user === undefined || user === null) {
                     response = {
                         returnCode : -1,
                         returnMessage : "Invalid Credentials",
-                        errors: err,
+                        errors: [{msg: err.sqlMessage}],
                         user: null,
                         token: null
                     };
@@ -185,7 +186,7 @@ router.post("/login",
         } catch (err) {
             response = {
                 returnCode : -1,
-                message : err.message,
+                returnMessage : err.message,
                 errors: null,
                 user: null,
                 token: null
@@ -198,7 +199,8 @@ router.get("/getuser", requireLogin, async (req, res) => {
     try {
         db.findByColumn("USER","username",req.user.username, (user) => {
             const response = {
-                message : "jwt getuser successfull",
+                returnCode: -1,
+                returnMessage: "jwt getuser successfull",
                 user: {id:user.id, name: user.name, username:user.username},
                 token: null
             };
@@ -208,7 +210,14 @@ router.get("/getuser", requireLogin, async (req, res) => {
     }
     catch(err) {
         console.log(err.message);
-        res.status(500).send("Server Error");
+        response = {
+            returnCode : -1,
+            returnMessage : err.message,
+            errors: null,
+            user: null,
+            token: null
+        };
+        res.status(500).send(response);
     }
 });
 
